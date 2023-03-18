@@ -18,6 +18,15 @@ st.set_page_config(
 #     with open(file_name) as f:
 #         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
+# Define a list of rules based on the Tao Te Ching
+rules = [
+    "Simplicity, patience, compassion.",
+    "Be content with what you have; rejoice in the way things are. When you realize there is nothing lacking, the whole world belongs to you.",
+    "Nature does not hurry, yet everything is accomplished.",
+    "The wise man does not lay up his own treasures. The more he gives to others, the more he has for his own.",
+    "He who knows, does not speak. He who speaks, does not know.",
+    "To the mind that is still, the whole universe surrenders.",
+]
 
 # local_css("style/style.css")
 data_file = 'data/data.csv'
@@ -69,7 +78,7 @@ with st.container():
     st.write("I am a highly motivated individual with a passion for coding, music, and outdoor adventures. In my free time, I enjoy hiking and camping in the great outdoors, as well as playing and composing music. I am always looking for new challenges and ways to learn and grow, both personally and professionally. Whether I'm coding a new software application or exploring the wilderness, I am driven by my love of problem-solving and creation.")
     #sp.speak("Hi, I am Rafik. A Software Engineer From USA.I am passionate about coding, fishing, and music. What about you? ")
 
-tab1, tab2, tab3 = st.tabs(["Data", "Analysis", "Russian Mafia Boss Rules"])
+tab1, tab2, tab3 = st.tabs(["Data", "Analysis", "Tao Te Ching Rules"])
 with tab1:
     st.dataframe(df, use_container_width=st.session_state.use_container_width)
 with tab2:
@@ -77,5 +86,9 @@ with tab2:
     col1.plotly_chart(fig_daily_trend, theme="streamlit", use_container_width=True)
     col2.plotly_chart(fig_weekly_trend, theme="streamlit", use_container_width=True)
     col3.plotly_chart(fig_act_dist, theme="streamlit", use_container_width=True)
+with tab3:
+    # Display each rule in a numbered list
+    for i, rule in enumerate(rules):
+        st.write(f"{i+1}. {rule}")
 
 
